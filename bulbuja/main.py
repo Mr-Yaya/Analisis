@@ -25,11 +25,8 @@ plt.title('Ordenamiento')
 plt.legend()
 plt.show()
 
-print(timeStamp.keys())
-
-f = open('timeStamp.csv','wb')
-w = csv.DictWriter(f,timeStamp.keys())
-w.writerows(timeStamp)
-f.close()
+with open('timeStamp.csv','w') as f:
+    w = csv.writer(f)
+    w.writerows(timeStamp.items())
 
 os.system('pause')
