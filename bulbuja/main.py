@@ -2,6 +2,9 @@ from datos import *
 from functions import *
 import time
 import os
+import csv
+import matplotlib.pyplot as plt
+import numpy as np
 
 initDatos()
 
@@ -10,12 +13,23 @@ data = arreglo
 timeStamp = {}
 
 for i in range(len(arreglo)):
-	t0 = time.process_time()
+	t0 = time.perf_counter()
 	tri_bullbuja(data[i])
-	t1 = time.process_time()
-
+	t1 = time.perf_counter()
 	timeStamp[sizes[i]] =  t1 - t0
 
-print(timeStamp)
+plt.plot(sizes,timeStamp.values(),label='tiempos')
+plt.xlabel('Tamanio Arreglo')
+plt.ylabel('Tiempo ordenamiento')
+plt.title('Ordenamiento')
+plt.legend()
+plt.show()
+
+print(timeStamp.keys())
+
+f = open('timeStamp.csv','wb')
+w = csv.DictWriter(f,timeStamp.keys())
+w.writerows(timeStamp)
+f.close()
 
 os.system('pause')
