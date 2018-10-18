@@ -5,4 +5,6 @@ Algo bulbuja pour des jeux de données de tailles
 
 recupérer le temps
 
+générer un csv
+
 faire graphique
